@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>text2</title>
+	<style>
+		body {
+			overflow: hidden;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../js/three.js"></script>
+</head>
+<body onload="init()">
+	<!-- 创建canvas -->
+	<canvas id="canvasId"></canvas>
+	<script>
+		function init() {
+			// 设置浏览器窗口宽高
+			var width = window.innerWidth
+			var height = window.innerHeight
+
+			// 场景 Scene
+			var scene = new THREE.Scene()
+			// 相机 Camera
+			// 具有透视效果
+			var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 800)
+
+			camera.position.x = 10
+			camera.position.y = 10
+			camera.position.z = 30
+			camera.lookAt(scene.position)
+
+			// 渲染器 Renderer
+			var renderer = new THREE.WebGLRenderer()
+			// 设置背景颜色和尺寸
+			renderer.setClearColor(0xffffff)
+			// renderer.setClearColor(0x000000)
+			renderer.setSize(width,height)
+
+			// 几何体
+			var cubeGeometry = new THREE.BoxGeometry(8,8,8)
+			//  创建材质
+			/*
+			* 基础网格材质
+			* color: 设置材质颜色
+			* wireframe: 如果为true,则将材质渲染为线框，在调试时可以起到很好的作用
+			* wireframeLinewidth: wireframe为true时，设置线框中线的宽度
+			* wireframeLinecap: 决定线框端点如何显示，可选值 round bevel(斜角) miter(尖角)
+			* vertexColors: 定义顶点的颜色，在canvasRender中不起作用
+			* fog: 决定单个材质是否受全局雾化的影响
+			*/
+			var cubeMaterial = new THREE.MeshBasicMaterial({
+				color: 0xff0000,
+				wireframe: true
+			})
+			// 创建立方体网格(mesh)
+			var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+			cube.position.x = 0
+			cube.position.y = 2
+			cube.position.z = 0
+			// 添加物体到场景中
+			scene.add(cube)
+			// 将渲染器的输出（canvas）插入到body中
+			document.body.appendChild(renderer.domElement)
+
+			// 渲染
+			renderer.render(scene, camera)
+		}
+	</script>
+</body>
+</html>
