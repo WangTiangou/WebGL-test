@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bottom</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="../js/three.js"></script>
+</head>
+<body onload="init()">
+    <canvas id="canvasId"></canvas>
+    <script>
+        function init() {
+            var width = window.innerWidth
+            var height = window.innerHeight
+
+            var scene = new THREE.Scene()
+            var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 800)
+
+            camera.position.x = 10
+			camera.position.y = 10
+			camera.position.z = 30
+			camera.lookAt(scene.position)
+            
+            var renderer = new THREE.WebGLRenderer()
+
+            renderer.setClearColor(0xffffff)
+            renderer.setSize(width,height)
+
+            var floor = new THREE.BoxGeometry(10,0,10)
+            //                                x  y  z
+            var floorMat = new THREE.MeshBasicMaterial({
+                color: 0xff0000
+            })
+            var bottom = new THREE.Mesh(floor,floorMat)
+            bottom.position.x = 0
+			bottom.position.y = 0
+			bottom.position.z = 0
+            scene.add(bottom)
+            document.body.appendChild(renderer.domElement)
+            renderer.render(scene, camera)
+        }
+    </script>
+</body>
+</html>

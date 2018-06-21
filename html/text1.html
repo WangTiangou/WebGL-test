@@ -27,6 +27,14 @@
 			var scene = new THREE.Scene()
 			// 相机 Camera
 			// 具有透视效果
+			/*
+			* PerspectiveCamera 透视相机
+			* 构造函数 PerspectiveCamera(fov,aspect,near,far)
+			* fov 相机的视物体的垂直视野角  默认为50° 从下到上
+			* aspect 相机视物体的长宽比  默认为1
+			* near 相机视物体的近平面  默认为0.1
+			* far 相机视物体的远平面  默认为2000
+			*/
 			var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 800)
 
 			camera.position.x = 10
