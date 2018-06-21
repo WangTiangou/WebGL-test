@@ -34,16 +34,28 @@
             renderer.setClearColor(0xffffff)
             renderer.setSize(width,height)
 
-            var floor = new THREE.BoxGeometry(10,0,10)
+            var floor = new THREE.BoxGeometry(10,1,10)
             //                                x  y  z
             var floorMat = new THREE.MeshBasicMaterial({
-                color: 0xff0000
+                color: 0x808080
             })
             var bottom = new THREE.Mesh(floor,floorMat)
             bottom.position.x = 0
 			bottom.position.y = 0
 			bottom.position.z = 0
-            scene.add(bottom)
+            // scene.add(bottom)
+            
+            var wall = new THREE.BoxGeometry(15,10,1)
+            var floorMat = new THREE.MeshBasicMaterial({
+                // wireframe: true,                
+                color: 0x808fff
+            })
+            var wall = new THREE.Mesh(wall,floorMat)
+            wall.position.x = -4
+			wall.position.y = 0
+			wall.position.z = -25 
+            scene.add(wall,bottom)
+
             document.body.appendChild(renderer.domElement)
             renderer.render(scene, camera)
         }
