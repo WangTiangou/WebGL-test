@@ -7,3 +7,4 @@
 write by WangTg
 
 > [Three.js地址](https://github.com/mrdoob/three.js/)
+> [ECharts.JS](http://echarts.baidu.com/)
