@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>text2</title>
+	<title>基础模型</title>
 	<style>
 		body {
 			overflow: hidden;
@@ -75,8 +75,18 @@
 			// 将渲染器的输出（canvas）插入到body中
 			document.body.appendChild(renderer.domElement)
 
-			// 渲染
-			renderer.render(scene, camera)
+			// 渲染场景
+			/**
+       * [animate description]
+       * Langery 2018-12-03
+       * requestAnimationFrame 当用户切换到其他标签的时候,它会暂停,不会浪费处理器资源以及耗损电池的使用寿命
+       */
+			// renderer.render(scene, camera)
+      function animate() {
+      	requestAnimationFrame(animate)
+      	renderer.render(scene, camera)
+      }
+      animate();
 		}
 	</script>
 </body>
