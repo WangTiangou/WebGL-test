@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rough Demo 1</title>
+</head>
+<body>
+  <div>
+    <canvas height="300" width="800" id="myCanvas"></canvas>
+  </div>
+  <script src="../js/rough-async.js"></script>
+  <script>
+    const rc = rough.canvas(document.getElementById('myCanvas'))
+
+    // rectangele
+    rc.rectangle(10, 10, 200, 200)
+
+    // circle
+    rc.circle(80, 120, 50)
+    rc.ellipse(300, 100, 150, 80)
+    rc.line(80, 120, 300, 100)
+
+    // line
+    rc.line(60, 60, 60, 190)
+  </script>
+</body>
+</html>
